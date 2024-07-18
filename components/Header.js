@@ -7,7 +7,7 @@ const logoImageUrl =
   "https://jony-next-commerce.s3.amazonaws.com/1721220975808.png";
 
 const StyledHeader = styled.header`
-  background-color: #222;
+  background-color: #2d3748;
 `;
 const Logo = styled(Link)`
   display: flex;

@@ -4,7 +4,7 @@ import Button from "./Button";
 import ButtonLink from "./ButtonLink";
 
 const Bg = styled.div`
-  background-color: #222;
+  background-color: #2a4365;
   color: #fff;
   padding: 50px 0;
 `;
@@ -68,7 +68,7 @@ export default function Featured({ product }) {
           </Column>
           <Column>
             <img
-              src="https://jony-next-commerce.s3.amazonaws.com/1721281061039.png"
+              src="https://jony-next-commerce.s3.amazonaws.com/1721231361613.png"
               alt=""
             />
           </Column>
