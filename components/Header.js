@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Center from "./Center";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 // Importa la imagen que deseas usar
 const logoImageUrl =
@@ -35,6 +37,7 @@ const NavLink = styled(Link)`
 `;
 
 export default function Header() {
+  const { cartProducts } = useContext(CartContext);
   return (
     <StyledHeader>
       <Center>
@@ -47,7 +50,9 @@ export default function Header() {
             <NavLink href={"/products"}>TODOS LOS PRODUCTOS</NavLink>
             <NavLink href={"/products"}>CATEGORIAS</NavLink>
             <NavLink href={"/products"}>CUENTA</NavLink>
-            <NavLink href={"/products"}>CARRITO (0)</NavLink>
+            <NavLink href={"/products"}>
+              CARRITO ({cartProducts.length})
+            </NavLink>
           </StyledNav>
         </Wrapper>
       </Center>
