@@ -50,9 +50,7 @@ export default function Header() {
             <NavLink href={"/products"}>TODOS LOS PRODUCTOS</NavLink>
             <NavLink href={"/products"}>CATEGORIAS</NavLink>
             <NavLink href={"/products"}>CUENTA</NavLink>
-            <NavLink href={"/products"}>
-              CARRITO ({cartProducts.length})
-            </NavLink>
+            <NavLink href={"/cart"}>CARRITO ({cartProducts.length})</NavLink>
           </StyledNav>
         </Wrapper>
       </Center>
