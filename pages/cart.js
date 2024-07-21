@@ -93,19 +93,26 @@ export default function CartPage() {
   }
 
   async function goToPayment() {
-    const response = await axios.post("/api/checkout", {
-      name,
-      email,
-      phone,
-      local,
-      city,
-      address,
-      main,
-      secondary,
-      cartProducts,
-    });
-    if (response.data.url) {
-      window.location = response.data.url;
+    try {
+      const response = await axios.post("/api/checkout", {
+        name,
+        email,
+        phone,
+        local,
+        city,
+        address,
+        main,
+        secondary,
+        cartProducts,
+      });
+
+      console.log("Response from checkout:", response.data);
+
+      if (response.data.success) {
+        window.location.href = "/thank-you"; // Redirige a la página de agradecimiento
+      }
+    } catch (error) {
+      console.error("Error during payment:", error);
     }
   }
 
@@ -113,19 +120,6 @@ export default function CartPage() {
   for (const productId of cartProducts) {
     const precio = products.find((p) => p._id === productId)?.precio || 0;
     total += precio;
-  }
-
-  if (window.location.href.includes("success")) {
-    return (
-      <>
-        <Header />
-        <Center>
-          <Box>
-            <h1>Gracias por su compra</h1>
-          </Box>
-        </Center>
-      </>
-    );
   }
 
   return (
