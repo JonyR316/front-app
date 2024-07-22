@@ -19,6 +19,7 @@ const Box = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0 0 10px #000;
 `;
 
 const ProductInfoCell = styled.td`
@@ -49,17 +50,41 @@ const CityHolder = styled.div`
   gap: 5px;
 `;
 
+const EmptyCartMessage = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    max-width: 150px;
+    margin-top: 20px;
+  }
+`;
+const EmptyCartMessage1 = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+  img {
+    max-width: 350px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px #000;
+  }
+`;
 export default function CartPage() {
-  const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
+  const { cartProducts, addProduct, removeProduct, clearCart } =
+    useContext(CartContext);
   const [products, setProducts] = useState([]);
-  const [name, setName] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [phone, setPhone] = useState([]);
-  const [local, setLocal] = useState([]);
-  const [city, setCity] = useState([]);
-  const [address, setAddress] = useState([]);
-  const [main, setMain] = useState([]);
-  const [secondary, setSecondary] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [local, setLocal] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [main, setMain] = useState("");
+  const [secondary, setSecondary] = useState("");
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -77,6 +102,7 @@ export default function CartPage() {
       setPhone(value);
     }
   };
+
   const handlePhoneChangeLocal = (ev) => {
     const value = ev.target.value;
     if (/^\d{0,10}$/.test(value)) {
@@ -109,6 +135,7 @@ export default function CartPage() {
       console.log("Response from checkout:", response.data);
 
       if (response.data.success) {
+        clearCart();
         window.location.href = "/thank-you"; // Redirige a la página de agradecimiento
       }
     } catch (error) {
@@ -128,9 +155,19 @@ export default function CartPage() {
       <Center>
         <ColumnsWrapper>
           <Box>
-            <h2>CARRITO</h2>
-            {!cartProducts?.length && <div>TU CARRITO ESTA VACIO</div>}
-            {products?.length > 0 && (
+            <EmptyCartMessage>
+              <h2>CARRITO</h2>
+              {!cartProducts.length && (
+                <EmptyCartMessage1>
+                  <p>TU CARRITO ESTÁ VACÍO</p>
+                  <img
+                    src="https://jony-next-commerce.s3.amazonaws.com/1721664270584.jpeg"
+                    alt="Imagen de carrito vacío"
+                  />
+                </EmptyCartMessage1>
+              )}
+            </EmptyCartMessage>
+            {products.length > 0 && (
               <Table>
                 <thead>
                   <tr>
@@ -141,12 +178,11 @@ export default function CartPage() {
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr>
+                    <tr key={product._id}>
                       <ProductInfoCell>
                         <ProductImageBox>
-                          <img src={product.images[0]} alt="" />
+                          <img src={product.images[0]} alt={product.title} />
                         </ProductImageBox>
-
                         {product.title}
                       </ProductInfoCell>
                       <td>
@@ -159,7 +195,6 @@ export default function CartPage() {
                               .length
                           }
                         </QuantityLabel>
-
                         <Button onClick={() => moreOfThisProduct(product._id)}>
                           +
                         </Button>
@@ -180,9 +215,9 @@ export default function CartPage() {
               </Table>
             )}
           </Box>
-          {!!cartProducts?.length && (
+          {!!cartProducts.length && (
             <Box>
-              <h2>INFORMACION DEL PEDIDO</h2>
+              <h2>INFORMACIÓN DEL PEDIDO</h2>
 
               <Input
                 type="text"
@@ -225,7 +260,7 @@ export default function CartPage() {
               </CityHolder>
               <Input
                 type="text"
-                placeholder="DIRECCION"
+                placeholder="DIRECCIÓN"
                 value={address}
                 name="address"
                 onChange={(ev) => setAddress(ev.target.value)}
