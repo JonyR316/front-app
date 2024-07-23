@@ -10,7 +10,10 @@ import styled from "styled-components";
 
 const ColumnsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
   gap: 40px;
   margin-top: 40px;
 `;
@@ -22,27 +25,43 @@ const Box = styled.div`
   box-shadow: 0 0 10px #000;
 `;
 
-const ProductInfoCell = styled.td`
+const ProductInfoProduct = styled.td`
   padding: 10px 0;
 `;
-
+const ProductInti = styled.td`
+  padding: 10px 0;
+`;
 const ProductImageBox = styled.div`
-  width: 100px;
+  width: 70px;
   height: 100px;
-  padding: 10px;
+  padding: 2px;
   box-shadow: 0 0 10px #aaa;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   img {
-    max-width: 80%;
-    max-height: 80px;
+    max-width: 70%;
+    max-height: 70px;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    img {
+      max-width: 80%;
+      max-height: 80px;
+    }
   }
 `;
 
 const QuantityLabel = styled.span`
-  padding: 0 3px;
+  padding: 0 15px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    padding: 0 10px;
+  }
 `;
 
 const CityHolder = styled.div`
@@ -179,12 +198,12 @@ export default function CartPage() {
                 <tbody>
                   {products.map((product) => (
                     <tr key={product._id}>
-                      <ProductInfoCell>
+                      <ProductInfoProduct>
                         <ProductImageBox>
                           <img src={product.images[0]} alt={product.title} />
                         </ProductImageBox>
-                        {product.title}
-                      </ProductInfoCell>
+                        <ProductInti>{product.title}</ProductInti>
+                      </ProductInfoProduct>
                       <td>
                         <Button onClick={() => lessOfThisProduct(product._id)}>
                           -

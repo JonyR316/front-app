@@ -1,8 +1,14 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
+`;
+
+const BigImage = styled.img`
+  max-width: 100%;
+  max-height: 200px;
 `;
 const ImageButtons = styled.div`
   display: flex;
@@ -13,6 +19,15 @@ const ImageButtons = styled.div`
 
 const ImageButton = styled.div`
   border: 2px solid #ccc;
+  ${(props) =>
+    props.active
+      ? `
+    border-color: #ccc;
+    `
+      : `
+      border-color: transprent;
+      opacity: .7;
+    `}
   height: 40px;
   padding: 2px;
   cursor: pointer;
@@ -20,13 +35,25 @@ const ImageButton = styled.div`
   box-shadow: 0 0 10px #000;
 `;
 
+const BigImageWrapper = styled.div`
+  text-align: center;
+`;
+
 export default function ProductImages({ images }) {
+  const [activeImage, setActiveImage] = useState(images[0]);
   return (
     <>
-      <Image src={images[0]} />
+      <BigImageWrapper>
+        <BigImage src={activeImage} />
+      </BigImageWrapper>
+
       <ImageButtons>
         {images.map((image) => (
-          <ImageButton>
+          <ImageButton
+            key={image}
+            active={image === activeImage}
+            onClick={() => setActiveImage(image)}
+          >
             <Image src={image} alt="" />
           </ImageButton>
         ))}
