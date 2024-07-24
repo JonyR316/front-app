@@ -7,6 +7,8 @@ import Table from "@/components/Table";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -138,6 +140,28 @@ export default function CartPage() {
   }
 
   async function goToPayment() {
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !local ||
+      !city ||
+      !address ||
+      !main ||
+      !secondary
+    ) {
+      Swal.fire({
+        title: "Faltan campos por llenar",
+        text: "Por favor, completa todos los campos antes de continuar.",
+        imageUrl:
+          "https://jony-next-commerce.s3.amazonaws.com/1721834304491.jpeg",
+        imageWidth: 300,
+        imageHeight: 300,
+        imageAlt: "Imagen de alerta",
+      });
+      return;
+    }
+
     try {
       const response = await axios.post("/api/checkout", {
         name,
