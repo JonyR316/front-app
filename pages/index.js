@@ -3,14 +3,8 @@ import Featured from "@/components/Featured";
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
 import NewProducts from "@/components/NewProducts";
-import NewCategories from "@/components/NewCategories";
-import { Category } from "@/models/Category";
 
-export default function HomePage({
-  featuredProduct,
-  newProducts,
-  newCategories,
-}) {
+export default function HomePage({ featuredProduct, newProducts }) {
   return (
     <div>
       <Header />
@@ -28,15 +22,11 @@ export async function getServerSideProps() {
     sort: { _id: -1 },
     limit: 16,
   });
-  const newCategories = await Category.find({}, null, {
-    sort: { _id: -1 },
-    limit: 16,
-  });
+
   return {
     props: {
       featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       newProducts: JSON.parse(JSON.stringify(newProducts)),
-      newCategories: JSON.parse(JSON.stringify(newCategories)),
     },
   };
 }
