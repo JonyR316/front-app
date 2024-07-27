@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Link from "next/link";
+
 const ProductWrapper = styled.div`
   text-align: center;
   margin-top: 20px;
@@ -36,12 +38,13 @@ const Title = styled.h2`
 export default function CategoryBox({ _id, name, parent, properties }) {
   const url = "/category/" + _id;
   return (
-    <ProductWrapper href={url}>
-      <Title>{name}</Title>
-
-      <WhiteBox>
-        <img src="https://jony-next-commerce.s3.amazonaws.com/1722038337143.png" />
-      </WhiteBox>
-    </ProductWrapper>
+    <Link href={url}>
+      <ProductWrapper>
+        <Title>{name}</Title>
+        <WhiteBox>
+          <img src="https://jony-next-commerce.s3.amazonaws.com/1722038337143.png" />
+        </WhiteBox>
+      </ProductWrapper>
+    </Link>
   );
 }
