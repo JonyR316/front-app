@@ -16,7 +16,7 @@ const WhiteBox = styled(Link)`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 9px 3px 15px #000;
   img {
     max-width: 100%;
     max-height: 150px;

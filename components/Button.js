@@ -11,6 +11,7 @@ export const ButtonStyle = css`
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+  box-shadow: 9px 3px 15px #000;
   svg {
     height: 16px;
     margin-left: 5px;
