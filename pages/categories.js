@@ -18,7 +18,6 @@ export default function CategoriesPage({ categories, totalPages }) {
         <Title>CATEGORIAS</Title>
         <CategoriesGrid categories={categories} />
         <Pagination
-          totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={(page) => setCurrentPage(page)}
         />

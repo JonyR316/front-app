@@ -25,9 +25,11 @@ const WhiteBox = styled(Link)`
 
 const Title = styled(Link)`
   font-weight: normal;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: inherit;
   text-decoration: none;
+  font-weight: 500;
+  text-align: center;
   margin: 0;
 `;
 

@@ -31,6 +31,13 @@ const Price = styled.span`
   font-size: 1.6rem;
 `;
 
+const WhiteBoxP = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 9px 3px 15px #000;
+`;
+
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
   return (
@@ -38,9 +45,9 @@ export default function ProductPage({ product }) {
       <Header />
       <Center>
         <ColWrapper>
-          <WhiteBox>
+          <WhiteBoxP>
             <ProductImages images={product.images} />
-          </WhiteBox>
+          </WhiteBoxP>
           <div>
             <Title>{product.title}</Title>
             <p>{product.descripcion}</p>

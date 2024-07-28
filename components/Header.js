@@ -7,7 +7,7 @@ import BarsIcon from "./icons/Bars";
 
 // Importa la imagen que deseas usar
 const logoImageUrl =
-  "https://jony-next-commerce.s3.amazonaws.com/1721220975808.png";
+  "https://jony-next-commerce.s3.amazonaws.com/1721220011677.jpg";
 
 const StyledHeader = styled.header`
   background-color: #2d3748;
@@ -21,7 +21,7 @@ const Logo = styled(Link)`
   z-index: 3;
 
   img {
-    height: 40px; /* Ajusta la altura de la imagen según sea necesario */
+    height: 50px; /* Ajusta la altura de la imagen según sea necesario */
   }
 `;
 const Wrapper = styled.div`
@@ -95,7 +95,7 @@ export default function Header() {
             <NavLink href={"/"}>INICIO</NavLink>
             <NavLink href={"/products"}>PRODUCTOS</NavLink>
             <NavLink href={"/categories"}>CATEGORIAS</NavLink>
-            <NavLink href={"/cuenta"}>CUENTA</NavLink>
+            <NavLink href={"/us"}>NOSOTROS</NavLink>
             <NavLink href={"/cart"}>CARRITO ({cartProducts.length})</NavLink>
           </StyledNav>
           <NavButton onClick={() => setMobileNavActive((prev) => !prev)}>

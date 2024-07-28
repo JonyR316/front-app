@@ -10,7 +10,7 @@ const ProductWrapper = styled.div`
   box-shadow: 9px 3px 15px #000;
 `;
 const WhiteBox = styled.div`
-  background-color: #ccc;
+  background-color: #fff;
   padding: 20px;
   height: 120px;
   text-align: center;
@@ -27,24 +27,34 @@ const WhiteBox = styled.div`
 `;
 
 const Title = styled.h2`
+  background-color: #fff;
   font-weight: normal;
   font-size: 1rem;
   margin: 0;
   box-shadow: 9px 3px 15px #000;
   padding: 10px;
   border-radius: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 `;
 
 export default function CategoryBox({ _id, name, parent, properties }) {
   const url = "/category/" + _id;
   return (
-    <Link href={url}>
+    <StyledLink href={url}>
       <ProductWrapper>
         <Title>{name}</Title>
         <WhiteBox>
           <img src="https://jony-next-commerce.s3.amazonaws.com/1722038337143.png" />
         </WhiteBox>
       </ProductWrapper>
-    </Link>
+    </StyledLink>
   );
 }
