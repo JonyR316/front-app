@@ -1,15 +1,19 @@
 import Center from "@/components/Center";
 import Header from "@/components/Header";
 import ProductsGrid from "@/components/ProductsGrid";
-import Pagination from "@/components/Pagination"; // Añade este import
+import Pagination from "@/components/Pagination";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import styled from "styled-components";
-import { useState } from "react";
+import { useRouter } from "next/router";
 import Title from "@/components/Title";
 
-export default function ProductsPage({ products, totalPages }) {
-  const [currentPage, setCurrentPage] = useState(1);
+export default function ProductsPage({ products, totalPages, currentPage }) {
+  const router = useRouter();
+
+  const handlePageChange = (page) => {
+    router.push(`/products?page=${page}`);
+  };
 
   return (
     <>
@@ -20,7 +24,7 @@ export default function ProductsPage({ products, totalPages }) {
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={handlePageChange}
         />
       </Center>
     </>
@@ -34,7 +38,7 @@ export async function getServerSideProps(context) {
 
   await mongooseConnect();
   const products = await Product.find({}, null, {
-    sort: { "_id:": -1 },
+    sort: { _id: -1 },
     skip,
     limit,
   });
@@ -45,6 +49,7 @@ export async function getServerSideProps(context) {
     props: {
       products: JSON.parse(JSON.stringify(products)),
       totalPages,
+      currentPage: page,
     },
   };
 }

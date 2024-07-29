@@ -5,13 +5,15 @@ import ButtonLink from "./ButtonLink";
 import CartIcon from "./icons/CartIcon";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { motion } from "framer-motion";
 
 const Bg = styled.div`
   background-color: #222;
   color: #fff;
   padding: 50px 0;
 `;
-const Title = styled.h1`
+
+const Title = styled(motion.h1)`
   margin: 0;
   font-weight: normal;
   font-size: 1.5rem;
@@ -19,10 +21,12 @@ const Title = styled.h1`
     font-size: 3rem;
   }
 `;
-const Desc = styled.p`
+
+const Desc = styled(motion.p)`
   color: #aaa;
   font-size: 0.8rem;
 `;
+
 const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -46,14 +50,22 @@ const ColumnsWrapper = styled.div`
     }
   }
 `;
+
 const Column = styled.div`
   display: flex;
   align-items: center;
 `;
-const ButtonsWrapper = styled.div`
+
+const ButtonsWrapper = styled(motion.div)`
   display: flex;
   gap: 10px;
   margin-top: 25px;
+`;
+
+const ImageWrapper = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default function Featured({ product }) {
@@ -61,15 +73,32 @@ export default function Featured({ product }) {
   function addFeaturedToCart() {
     addProduct(product._id);
   }
+
   return (
     <Bg>
       <Center>
         <ColumnsWrapper>
           <Column>
             <div>
-              <Title>{product.title}</Title>
-              <Desc>{product.descripcion}</Desc>
-              <ButtonsWrapper>
+              <Title
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+              >
+                {product.title}
+              </Title>
+              <Desc
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.2 }}
+              >
+                {product.descripcion}
+              </Desc>
+              <ButtonsWrapper
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+              >
                 <ButtonLink
                   href={"/product/" + product._id}
                   outline={1}
@@ -85,10 +114,16 @@ export default function Featured({ product }) {
             </div>
           </Column>
           <Column>
-            <img
-              src="https://jony-next-commerce.s3.amazonaws.com/1721231361613.png"
-              alt=""
-            />
+            <ImageWrapper
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <img
+                src="https://jony-next-commerce.s3.amazonaws.com/1721231361613.png"
+                alt=""
+              />
+            </ImageWrapper>
           </Column>
         </ColumnsWrapper>
       </Center>

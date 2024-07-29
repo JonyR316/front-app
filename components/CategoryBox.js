@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-const ProductWrapper = styled.div`
+const ProductWrapper = styled(motion.div)`
   text-align: center;
   margin-top: 20px;
   padding: 20px;
@@ -9,6 +10,7 @@ const ProductWrapper = styled.div`
   cursor: pointer;
   box-shadow: 9px 3px 15px #000;
 `;
+
 const WhiteBox = styled.div`
   background-color: #fff;
   padding: 20px;
@@ -38,6 +40,7 @@ const Title = styled.h2`
   color: black;
   font-weight: 700;
 `;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   &:hover {
@@ -49,7 +52,11 @@ export default function CategoryBox({ _id, name, parent, properties }) {
   const url = "/category/" + _id;
   return (
     <StyledLink href={url}>
-      <ProductWrapper>
+      <ProductWrapper
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <Title>{name}</Title>
         <WhiteBox>
           <img src="https://jony-next-commerce.s3.amazonaws.com/1722038337143.png" />

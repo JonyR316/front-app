@@ -4,8 +4,9 @@ import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { motion } from "framer-motion";
 
-const ProductWrapper = styled.div``;
+const ProductWrapper = styled(motion.div)``;
 
 const WhiteBox = styled(Link)`
   background-color: #fff;
@@ -68,8 +69,13 @@ export default function ProductBox({
 }) {
   const { addProduct } = useContext(CartContext);
   const url = "/product/" + _id;
+
   return (
-    <ProductWrapper>
+    <ProductWrapper
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <WhiteBox href={url}>
         <div>
           <img src={images[0]} alt="" />
