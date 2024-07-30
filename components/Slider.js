@@ -4,18 +4,28 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Center from "./Center";
 
 const SliderContainer = styled.div`
-  width: 90vw; // 10% menos que el ancho completo
-  height: 90vh; // 10% menos que la altura completa
-  position: relative;
-  margin: 10px auto; // Centra el slider horizontalmente
-  overflow: hidden; // Oculta cualquier contenido que sobresalga
+  width: 100%;
+  margin: auto;
+  padding-top: 10px;
+  box-shadow: 15px 15px 10px #000;
+
+  .slick-slide {
+    position: relative;
+    text-align: center;
+  }
+
+  .slick-prev,
+  .slick-next {
+    display: none !important; // Oculta las flechas de navegación
+  }
 `;
 
 const SlideImage = styled.img`
   width: 100%;
-  height: 100%;
+  height: 300px;
   object-fit: cover;
 `;
 
@@ -29,7 +39,6 @@ const SlideText = styled.div`
   background: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
   border-radius: 5px;
-  z-index: 1; // Asegura que el texto esté sobre la imagen
 `;
 
 const ImageSlider = ({ images }) => {
@@ -39,22 +48,23 @@ const ImageSlider = ({ images }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // Habilita el autoplay
-    autoplaySpeed: 3000, // Transición cada 3 segundos
-    fade: true, // Transición de fundido entre imágenes
+    autoplay: true, // Activa el desplazamiento automático
+    autoplaySpeed: 3000, // Tiempo en milisegundos entre cada cambio de imagen (3 segundos)
   };
 
   return (
-    <SliderContainer>
-      <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index}>
-            <SlideImage src={image.src} alt={`Slide ${index + 1}`} />
-            <SlideText>{image.text}</SlideText>
-          </div>
-        ))}
-      </Slider>
-    </SliderContainer>
+    <Center>
+      <SliderContainer>
+        <Slider {...settings}>
+          {images.map((image, index) => (
+            <div key={index}>
+              <SlideImage src={image.src} alt={`Slide ${index + 1}`} />
+              <SlideText>{image.text}</SlideText>
+            </div>
+          ))}
+        </Slider>
+      </SliderContainer>
+    </Center>
   );
 };
 
