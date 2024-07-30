@@ -1,3 +1,4 @@
+// pages/index.js
 import Header from "@/components/Header";
 import Featured from "@/components/Featured";
 import { Product } from "@/models/Product";
@@ -5,6 +6,7 @@ import { mongooseConnect } from "@/lib/mongoose";
 import NewProducts from "@/components/NewProducts";
 import NewCategories from "@/components/NewCategories";
 import { Category } from "@/models/Category";
+import Footer from "@/components/Footer";
 
 export default function HomePage({
   featuredProduct,
@@ -16,6 +18,7 @@ export default function HomePage({
       <Header />
       <Featured product={featuredProduct} />
       <NewProducts products={newProducts} />
+      <Footer />
     </div>
   );
 }

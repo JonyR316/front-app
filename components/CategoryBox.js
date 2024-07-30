@@ -59,7 +59,7 @@ export default function CategoryBox({ _id, name, parent, properties }) {
       >
         <Title>{name}</Title>
         <WhiteBox>
-          <img src="https://jony-next-commerce.s3.amazonaws.com/1722038337143.png" />
+          <img src="https://jony-next-commerce.s3.amazonaws.com/1722311337254.jpeg" />
         </WhiteBox>
       </ProductWrapper>
     </StyledLink>
