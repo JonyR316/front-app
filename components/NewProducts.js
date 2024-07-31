@@ -5,7 +5,7 @@ import ProductsGrid from "./ProductsGrid";
 const Title = styled.h2`
   font-size: 2rem;
   margin: 0;
-  margin: 30px 0 20px;
+  margin: 20px 0 10px;
   font-weight: 500;
 `;
 

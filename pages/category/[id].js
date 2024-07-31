@@ -9,6 +9,7 @@ import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
 import styled from "styled-components";
 import { useState } from "react";
+import Footer from "@/components/Footer";
 
 const ColWrapper = styled.div`
   display: grid;

@@ -7,6 +7,7 @@ import { Category } from "@/models/Category";
 import styled from "styled-components";
 import { useState } from "react";
 import Title from "@/components/Title";
+import Footer from "@/components/Footer";
 
 export default function CategoriesPage({ categories, totalPages }) {
   const [currentPage, setCurrentPage] = useState(1);

@@ -2,9 +2,9 @@ import styled, { keyframes } from "styled-components";
 import Center from "./Center";
 
 const StyledHeader = styled.div`
-  background-color: #2d3748;
+  background-color: #555;
   margin-top: 10px;
-  box-shadow: 18px 6px 30px 5px #000;
+  box-shadow: 15px 5px 15px #000;
   border-radius: 10px;
 `;
 
@@ -22,14 +22,14 @@ const blink = keyframes`
 `;
 
 const Title = styled.div`
-  background-color: #ccc;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%; /* Asegura que el título ocupe todo el ancho disponible */
-  height: 40px; /* Ajusta la altura del contenedor del título */
+  height: 10px; /* Ajusta la altura del contenedor del título */
   animation: ${blink} 1s infinite; /* Aplica la animación */
-  font-size: 1.2rem; /* Ajusta el tamaño de la fuente */
+  font-size: 1.6rem; /* Ajusta el tamaño de la fuente */
   padding: 10px; /* Añade padding para dar espacio alrededor del texto */
   text-align: center; /* Asegura que el texto esté centrado */
 

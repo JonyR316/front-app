@@ -20,10 +20,9 @@ export default function HomePage({
       <Header />
       <Featured product={featuredProduct} />
       <Franjas />
-      <NewProducts products={newProducts} />
-
       <Portada />
-      <Footer />
+      <NewProducts products={newProducts} />
+      <Franjas />
     </div>
   );
 }

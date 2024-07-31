@@ -7,6 +7,7 @@ import { Product } from "@/models/Product";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Title from "@/components/Title";
+import Footer from "@/components/Footer";
 
 export default function ProductsPage({ products, totalPages, currentPage }) {
   const router = useRouter();

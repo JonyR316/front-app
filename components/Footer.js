@@ -2,19 +2,23 @@
 import React from "react";
 import {
   FaFacebook,
-  FaTwitter,
   FaInstagram,
+  FaWhatsapp,
   FaShippingFast,
+  FaStore,
+  FaLock,
+  FaCreditCard,
   FaMapMarkerAlt,
-  FaPhoneAlt,
 } from "react-icons/fa";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  background-color: #000;
-  color: white;
+  background-color: transparent;
+  color: black;
   padding: 20px 0;
   text-align: center;
+  border-top: 1px solid black; /* Línea delgada en la parte superior */
+  margin-top: 10px; /* Permite que el footer se mantenga en la parte inferior */
 `;
 
 const SocialIcons = styled.div`
@@ -24,7 +28,7 @@ const SocialIcons = styled.div`
   margin-bottom: 20px;
 
   a {
-    color: white;
+    color: black;
     font-size: 24px;
     transition: color 0.3s;
 
@@ -43,9 +47,16 @@ const InfoSection = styled.div`
 
 const InfoItem = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-size: 16px;
+  text-align: center;
+  gap: 5px;
+  font-size: 13px;
+  width: 150px; /* Ancho fijo para alineación */
+`;
+
+const InfoText = styled.div`
+  margin-top: 4px; /* Espacio entre el título y el párrafo */
 `;
 
 const Footer = () => {
@@ -53,18 +64,11 @@ const Footer = () => {
     <FooterContainer>
       <SocialIcons>
         <a
-          href="https://www.facebook.com"
+          href="https://www.facebook.com/profile.php?id=100066712185951"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaFacebook />
-        </a>
-        <a
-          href="https://www.twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaTwitter />
         </a>
         <a
           href="https://www.instagram.com"
@@ -73,19 +77,63 @@ const Footer = () => {
         >
           <FaInstagram />
         </a>
+        <a
+          href="https://www.whatsapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaWhatsapp />
+        </a>
+        <a
+          href="https://www.google.com/maps"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaMapMarkerAlt />
+        </a>
       </SocialIcons>
       <InfoSection>
         <InfoItem>
           <FaShippingFast />
-          <span>Envío Gratis</span>
+          <span>
+            <b>Envío Gratis</b>
+          </span>
+          <InfoText>Envío gratuito por tus compras</InfoText>
+        </InfoItem>
+        <InfoItem>
+          <FaStore />
+          <span>
+            <b>Reserva en Línea</b>
+          </span>
+          <InfoText>Reserva tus productos en nuestra tienda online</InfoText>
         </InfoItem>
         <InfoItem>
           <FaMapMarkerAlt />
-          <span>Dirección: Calle Ejemplo 123</span>
+          <span>
+            <b>Tienda Física</b>
+          </span>
+          <InfoText>
+            Visítanos y recoge tus compras en nuestra tienda física
+          </InfoText>
         </InfoItem>
         <InfoItem>
-          <FaPhoneAlt />
-          <span>Contacto: +123 456 7890</span>
+          <FaLock />
+          <span>
+            <b>Compra Segura</b>
+          </span>
+          <InfoText>
+            Tu compra siempre será 100% segura en nuestro sitio
+          </InfoText>
+        </InfoItem>
+        <InfoItem>
+          <FaCreditCard />
+          <span>
+            <b>Formas de Pago</b>
+          </span>
+          <InfoText>
+            Elige entre diferentes formas de pago: Tarjeta de crédito o débito,
+            transferencia bancaria.
+          </InfoText>
         </InfoItem>
       </InfoSection>
     </FooterContainer>

@@ -10,11 +10,14 @@ const SliderContainer = styled.div`
   width: 100%;
   margin: auto;
   padding-top: 10px;
-  box-shadow: 15px 15px 10px #000;
 
   .slick-slide {
     position: relative;
     text-align: center;
+  }
+
+  .slick-dots {
+    display: none !important; // Oculta los puntos de navegación
   }
 
   .slick-prev,
@@ -43,7 +46,7 @@ const SlideText = styled.div`
 
 const ImageSlider = ({ images }) => {
   const settings = {
-    dots: true,
+    dots: false, // Desactiva los puntos de navegación
     infinite: true,
     speed: 500,
     slidesToShow: 1,
