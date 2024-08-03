@@ -31,9 +31,11 @@ const Box = styled.div`
 const ProductInfoProduct = styled.td`
   padding: 10px 0;
 `;
+
 const ProductInti = styled.td`
   padding: 10px 0;
 `;
+
 const ProductImageBox = styled.div`
   width: 70px;
   height: 100px;
@@ -43,14 +45,17 @@ const ProductImageBox = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+
   img {
     max-width: 70%;
     max-height: 70px;
   }
+
   @media screen and (min-width: 768px) {
     padding: 10px;
     width: 100px;
     height: 100px;
+
     img {
       max-width: 80%;
       max-height: 80px;
@@ -61,6 +66,7 @@ const ProductImageBox = styled.div`
 const QuantityLabel = styled.span`
   padding: 0 15px;
   display: block;
+
   @media screen and (min-width: 768px) {
     display: inline-block;
     padding: 0 10px;
@@ -83,18 +89,21 @@ const EmptyCartMessage = styled.div`
     margin-top: 20px;
   }
 `;
+
 const EmptyCartMessage1 = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: 600;
+
   img {
     max-width: 350px;
     margin-top: 20px;
     box-shadow: 0 0 10px #000;
   }
 `;
+
 export default function CartPage() {
   const { cartProducts, addProduct, removeProduct, clearCart } =
     useContext(CartContext);
@@ -141,6 +150,7 @@ export default function CartPage() {
   }
 
   async function goToPayment() {
+    // Primero, verifica si todos los campos están completos
     if (
       !name ||
       !email ||
@@ -151,7 +161,8 @@ export default function CartPage() {
       !main ||
       !secondary
     ) {
-      Swal.fire({
+      // Mostrar alerta si hay campos vacíos
+      await Swal.fire({
         title: "Faltan campos por llenar",
         text: "Por favor, completa todos los campos antes de continuar.",
         imageUrl:
@@ -163,27 +174,43 @@ export default function CartPage() {
       return;
     }
 
-    try {
-      const response = await axios.post("/api/checkout", {
-        name,
-        email,
-        phone,
-        local,
-        city,
-        address,
-        main,
-        secondary,
-        cartProducts,
-      });
+    // Mostrar alerta de confirmación
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¿Quieres continuar con la compra?",
+      imageUrl:
+        "https://jony-next-commerce.s3.amazonaws.com/1722688377263.jpeg",
+      imageWidth: 300,
+      imageHeight: 300,
+      showCancelButton: true,
+      confirmButtonText: "Sí, continuar",
+      cancelButtonText: "No, cancelar",
+    });
 
-      console.log("Response from checkout:", response.data);
+    // Si el usuario confirma, proceder con el pago
+    if (result.isConfirmed) {
+      try {
+        const response = await axios.post("/api/checkout", {
+          name,
+          email,
+          phone,
+          local,
+          city,
+          address,
+          main,
+          secondary,
+          cartProducts,
+        });
 
-      if (response.data.success) {
-        clearCart();
-        window.location.href = "/thank-you"; // Redirige a la página de agradecimiento
+        console.log("Response from checkout:", response.data);
+
+        if (response.data.success) {
+          clearCart();
+          window.location.href = "/thank-you"; // Redirige a la página de agradecimiento
+        }
+      } catch (error) {
+        console.error("Error during payment:", error);
       }
-    } catch (error) {
-      console.error("Error during payment:", error);
     }
   }
 
@@ -323,14 +350,14 @@ export default function CartPage() {
                 name="secondary"
                 onChange={(ev) => setSecondary(ev.target.value)}
               />
-
-              <Button black block onClick={goToPayment}>
+              <Button primary onClick={goToPayment}>
                 CONTINUAR CON EL PAGO
               </Button>
             </Box>
           )}
         </ColumnsWrapper>
       </Center>
+      <Footer />
     </>
   );
 }
