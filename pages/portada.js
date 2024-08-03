@@ -7,20 +7,22 @@ import Center from "@/components/Center";
 const Portada = () => {
   const images = [
     {
-      src: "https://jony-next-commerce.s3.amazonaws.com/1722363595045.png",
-      text: "Texto sobre imagen 1",
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679542231.png",
     },
     {
-      src: "https://jony-next-commerce.s3.amazonaws.com/1722325880772.jpeg",
-      text: "Texto sobre imagen 2",
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679560430.png",
     },
     {
-      src: "https://jony-next-commerce.s3.amazonaws.com/1722325892349.webp",
-      text: "Texto sobre imagen 3",
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679572761.png",
     },
     {
-      src: "https://jony-next-commerce.s3.amazonaws.com/1722325910093.jpg",
-      text: "Texto sobre imagen 4",
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679586328.png",
+    },
+    {
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679606313.png",
+    },
+    {
+      src: "https://jony-next-commerce.s3.amazonaws.com/1722679623226.png",
     },
   ];
 

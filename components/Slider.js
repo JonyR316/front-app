@@ -9,17 +9,18 @@ import Center from "./Center";
 const SliderContainer = styled.div`
   width: 100%;
   margin: auto;
-  padding-top: 10px;
+  padding-top: 20px;
 
   .slick-slide {
     position: relative;
     text-align: center;
+    transition: transform 0.5s ease-in-out;
   }
 
-  .slick-dots {
-    display: none !important; // Oculta los puntos de navegación
+  .slick-center {
+    transform: scale(1.1);
+    z-index: 1;
   }
-
   .slick-prev,
   .slick-next {
     display: none !important; // Oculta las flechas de navegación
@@ -27,32 +28,25 @@ const SliderContainer = styled.div`
 `;
 
 const SlideImage = styled.img`
-  width: 100%;
-  height: 300px;
+  width: 90%;
+  height: 400px;
   object-fit: cover;
-`;
-
-const SlideText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 24px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  border-radius: 5px;
+  margin: auto;
+  border: 10px;
+  border-radius: 10px;
 `;
 
 const ImageSlider = ({ images }) => {
   const settings = {
-    dots: false, // Desactiva los puntos de navegación
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true, // Activa el desplazamiento automático
-    autoplaySpeed: 3000, // Tiempo en milisegundos entre cada cambio de imagen (3 segundos)
+    centerMode: true,
+    centerPadding: "0",
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -62,7 +56,6 @@ const ImageSlider = ({ images }) => {
           {images.map((image, index) => (
             <div key={index}>
               <SlideImage src={image.src} alt={`Slide ${index + 1}`} />
-              <SlideText>{image.text}</SlideText>
             </div>
           ))}
         </Slider>
