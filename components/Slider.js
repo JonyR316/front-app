@@ -1,7 +1,7 @@
-// components/Slider.js
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Center from "./Center";
@@ -21,13 +21,14 @@ const SliderContainer = styled.div`
     transform: scale(1.1);
     z-index: 1;
   }
+
   .slick-prev,
   .slick-next {
-    display: none !important; // Oculta las flechas de navegación
+    display: none !important;
   }
 `;
 
-const SlideImage = styled.img`
+const SlideImage = styled(motion.img)`
   width: 90%;
   height: 400px;
   object-fit: cover;
@@ -55,7 +56,13 @@ const ImageSlider = ({ images }) => {
         <Slider {...settings}>
           {images.map((image, index) => (
             <div key={index}>
-              <SlideImage src={image.src} alt={`Slide ${index + 1}`} />
+              <SlideImage
+                src={image.src}
+                alt={`Slide ${index + 1}`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              />
             </div>
           ))}
         </Slider>
