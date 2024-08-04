@@ -10,6 +10,8 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -206,12 +208,51 @@ export default function CartPage() {
 
         if (response.data.success) {
           clearCart();
+          generatePDF();
           window.location.href = "/thank-you"; // Redirige a la página de agradecimiento
         }
       } catch (error) {
         console.error("Error during payment:", error);
       }
     }
+  }
+
+  function generatePDF() {
+    const doc = new jsPDF();
+    doc.text("Orden de Compra", 20, 20);
+    doc.text(`Nombre: ${name}`, 20, 30);
+    doc.text(`Email: ${email}`, 20, 40);
+    doc.text(`Celular: ${phone}`, 20, 50);
+    doc.text(`Convencional: ${local}`, 20, 60);
+    doc.text(`Ciudad: ${city}`, 20, 70);
+    doc.text(`Dirección: ${address}`, 20, 80);
+    doc.text(`Calle Principal: ${main}`, 20, 90);
+    doc.text(`Calle Secundaria: ${secondary}`, 20, 100);
+
+    const tableColumn = ["Producto", "Cantidad", "Precio"];
+    const tableRows = [];
+
+    products.forEach((product) => {
+      const productData = [
+        product.title,
+        cartProducts.filter((id) => id === product._id).length,
+        `$${
+          product.precio *
+          cartProducts.filter((id) => id === product._id).length
+        }`,
+      ];
+      tableRows.push(productData);
+    });
+
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 110,
+    });
+
+    doc.text(`Total: $${total}`, 20, doc.autoTable.previous.finalY + 10);
+
+    doc.save("order.pdf");
   }
 
   let total = 0;
@@ -252,11 +293,11 @@ export default function CartPage() {
                     <tr key={product._id}>
                       <ProductInfoProduct>
                         <ProductImageBox>
-                          <img src={product.images[0]} alt={product.title} />
+                          <img src={product.images[0]} alt="" />
                         </ProductImageBox>
-                        <ProductInti>{product.title}</ProductInti>
+                        {product.title}
                       </ProductInfoProduct>
-                      <td>
+                      <ProductInti>
                         <Button onClick={() => lessOfThisProduct(product._id)}>
                           -
                         </Button>
@@ -269,7 +310,7 @@ export default function CartPage() {
                         <Button onClick={() => moreOfThisProduct(product._id)}>
                           +
                         </Button>
-                      </td>
+                      </ProductInti>
                       <td>
                         $
                         {cartProducts.filter((id) => id === product._id)
@@ -288,42 +329,39 @@ export default function CartPage() {
           </Box>
           {!!cartProducts.length && (
             <Box>
-              <h2>INFORMACIÓN DEL PEDIDO</h2>
-
+              <h2>Orden</h2>
               <Input
                 type="text"
-                placeholder="NOMBRE"
+                placeholder="Nombre"
                 value={name}
                 name="name"
                 onChange={(ev) => setName(ev.target.value)}
               />
               <Input
                 type="text"
-                placeholder="EMAIL"
+                placeholder="Correo electrónico"
                 value={email}
                 name="email"
                 onChange={(ev) => setEmail(ev.target.value)}
               />
               <Input
                 type="text"
-                placeholder="CELULAR"
+                placeholder="Número celular"
                 value={phone}
                 name="phone"
                 onChange={handlePhoneChange}
-                pattern="[0-9]*"
               />
               <Input
                 type="text"
-                placeholder="CONVENCIONAL"
+                placeholder="Número Convencional"
                 value={local}
                 name="local"
                 onChange={handlePhoneChangeLocal}
-                pattern="[0-9]*"
               />
               <CityHolder>
                 <Input
                   type="text"
-                  placeholder="CIUDAD"
+                  placeholder="Ciudad"
                   value={city}
                   name="city"
                   onChange={(ev) => setCity(ev.target.value)}
@@ -331,33 +369,32 @@ export default function CartPage() {
               </CityHolder>
               <Input
                 type="text"
-                placeholder="DIRECCIÓN"
+                placeholder="Dirección"
                 value={address}
                 name="address"
                 onChange={(ev) => setAddress(ev.target.value)}
               />
               <Input
                 type="text"
-                placeholder="CALLE PRINCIPAL"
+                placeholder="Calle principal"
                 value={main}
                 name="main"
                 onChange={(ev) => setMain(ev.target.value)}
               />
               <Input
                 type="text"
-                placeholder="CALLE SECUNDARIA"
+                placeholder="Calle secundaria"
                 value={secondary}
                 name="secondary"
                 onChange={(ev) => setSecondary(ev.target.value)}
               />
-              <Button primary onClick={goToPayment}>
-                CONTINUAR CON EL PAGO
+              <Button black block onClick={goToPayment}>
+                Continuar al pago
               </Button>
             </Box>
           )}
         </ColumnsWrapper>
       </Center>
-      <Footer />
     </>
   );
 }
