@@ -16,7 +16,7 @@ const TitleStyled = styled(Title)`
   justify-content: center;
   font-size: 2rem;
   margin: 20px;
-  margin: 20px 50px 15px 50px;
+  margin: 20px 0px 15px 0px;
   background-color: #2d3748;
   color: #fff;
 `;
