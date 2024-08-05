@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const ProductWrapper = styled(motion.div)`
-  background-color: #fff;
+  background-color: #2d3748;
   text-align: center;
   margin-top: 20px;
   padding: 20px;
@@ -13,7 +13,7 @@ const ProductWrapper = styled(motion.div)`
 `;
 
 const WhiteBox = styled.div`
-  background-color: #fff;
+  background-color: #2d3748;
   padding: 20px;
   height: 120px;
   text-align: center;
@@ -32,7 +32,6 @@ const WhiteBox = styled.div`
 `;
 
 const Title = styled.h2`
-  background-color: #fff;
   font-weight: normal;
   font-size: 1rem;
   margin: 0;
@@ -42,6 +41,8 @@ const Title = styled.h2`
   text-decoration: none;
   color: black;
   font-weight: 700;
+  background-color: #2d3748;
+  color: #fff;
 `;
 
 const StyledLink = styled(Link)`
