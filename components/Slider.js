@@ -15,10 +15,11 @@ const SliderContainer = styled.div`
     position: relative;
     text-align: center;
     transition: transform 0.5s ease-in-out;
+    transform: scale(0.9); /* Escalar a 80% por defecto */
   }
 
   .slick-center {
-    transform: scale(1.1);
+    transform: scale(1); /* Escalar a 110% la imagen del centro */
     z-index: 1;
   }
 
@@ -29,12 +30,13 @@ const SliderContainer = styled.div`
 `;
 
 const SlideImage = styled(motion.img)`
-  width: 90%;
+  width: 100%;
   height: 400px;
   object-fit: cover;
   margin: auto;
   border: 10px;
   border-radius: 10px;
+  box-shadow: 0px 8px 15px 0px #000;
 `;
 
 const ImageSlider = ({ images }) => {

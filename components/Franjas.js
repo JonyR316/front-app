@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import Center from "./Center";
 
 const StyledHeader = styled.div`
-  background-color: #555;
+  background-color: #2d3748;
   margin-top: 10px;
   box-shadow: 15px 5px 15px #000;
   border-radius: 10px;

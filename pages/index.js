@@ -9,6 +9,7 @@ import { Category } from "@/models/Category";
 import Footer from "@/components/Footer";
 import Portada from "./portada";
 import Franjas from "@/components/Franjas";
+import Promo from "@/components/Promo";
 
 export default function HomePage({
   featuredProduct,
@@ -19,8 +20,9 @@ export default function HomePage({
     <div>
       <Header />
       <Featured product={featuredProduct} />
-      <Franjas />
+
       <Portada />
+      <Promo />
       <NewProducts products={newProducts} />
       <Franjas />
     </div>

@@ -51,7 +51,7 @@ const ImageBox = styled.div`
     width: 100px; // Ajusta el tamaño según sea necesario
     height: 100px; // Ajusta el tamaño según sea necesario
     object-fit: cover;
-    border: 10px solid white;
+
     border-radius: 10px;
     margin-right: 20px; // Espacio entre la imagen y el texto
     box-shadow: 9px 3px 15px #000;
