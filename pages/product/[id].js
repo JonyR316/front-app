@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import CartIcon from "@/components/icons/CartIcon";
 import ProductImages from "@/components/ProductImages";
 import Title from "@/components/Title";
+import TitleP from "@/components/TitleP";
 import WhiteBox from "@/components/WhiteBox";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
@@ -47,7 +48,7 @@ export default function ProductPage({ product }) {
       <>
         <Header />
         <Center>
-          <Title>Producto no encontrado</Title>
+          <TitleP>Producto no encontrado</TitleP>
         </Center>
         <Footer />
       </>
@@ -63,7 +64,7 @@ export default function ProductPage({ product }) {
             <ProductImages images={product.images} />
           </WhiteBoxP>
           <div>
-            <Title>{product.title}</Title>
+            <TitleP>{product.title}</TitleP>
             <p>{product.descripcion}</p>
             <PriceRow>
               <div>
