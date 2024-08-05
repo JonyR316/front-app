@@ -9,7 +9,7 @@ const Title = styled.h1`
   justify-content: center;
   font-size: 2rem;
   margin: 20px;
-  margin: 20px 150px 0px 150px;
+  margin: 20px 150px 15px 150px;
   background-color: #222;
   color: #fff;
 `;
