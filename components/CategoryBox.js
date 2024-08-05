@@ -49,7 +49,7 @@ const StyledLink = styled(Link)`
 `;
 
 export default function CategoryBox({ _id, name, parent, properties }) {
-  const url = "/category/" + _id;
+  const url = parent ? `/subcategory/${_id}` : `/category/${_id}`;
   return (
     <StyledLink href={url}>
       <ProductWrapper

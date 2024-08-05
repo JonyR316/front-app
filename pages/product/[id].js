@@ -41,6 +41,19 @@ const WhiteBoxP = styled.div`
 
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
+
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <Center>
+          <Title>Producto no encontrado</Title>
+        </Center>
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <>
       <Header />
@@ -74,6 +87,15 @@ export async function getServerSideProps(context) {
   await mongooseConnect();
   const { id } = context.query;
   const product = await Product.findById(id);
+
+  if (!product) {
+    return {
+      props: {
+        product: null,
+      },
+    };
+  }
+
   return {
     props: {
       product: JSON.parse(JSON.stringify(product)),
