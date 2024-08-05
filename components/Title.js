@@ -10,7 +10,7 @@ const Title = styled.h1`
   font-size: 2rem;
   margin: 20px;
   margin: 20px 150px 0px 150px;
-  background-color: #2d3748;
+  background-color: #222;
   color: #fff;
 `;
 
