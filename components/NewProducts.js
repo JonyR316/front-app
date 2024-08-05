@@ -12,7 +12,7 @@ const Title = styled.h2`
 export default function NewProducts({ products }) {
   return (
     <Center>
-      <Title>MAQUINAS RECIENTES</Title>
+      <Title>ARTICULOS RECIENTES</Title>
       <ProductsGrid products={products} />
     </Center>
   );

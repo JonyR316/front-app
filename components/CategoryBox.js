@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const ProductWrapper = styled(motion.div)`
+  background-color: #fff;
   text-align: center;
   margin-top: 20px;
   padding: 20px;
@@ -22,9 +23,11 @@ const WhiteBox = styled.div`
   border-radius: 10px;
   box-shadow: 9px 3px 15px #000;
   margin-top: 10px;
+
   img {
     max-width: 100%;
     max-height: 150px;
+    border-radius: 10px;
   }
 `;
 

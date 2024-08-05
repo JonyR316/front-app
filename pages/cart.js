@@ -34,6 +34,10 @@ const ProductInfoProduct = styled.td`
   padding: 10px 0;
 `;
 
+const TituloInfoProduct = styled.div`
+  margin-top: 3px;
+`;
+
 const ProductInti = styled.td`
   padding: 10px 0;
 `;
@@ -295,7 +299,7 @@ export default function CartPage() {
                         <ProductImageBox>
                           <img src={product.images[0]} alt="" />
                         </ProductImageBox>
-                        {product.title}
+                        <TituloInfoProduct>{product.title}</TituloInfoProduct>
                       </ProductInfoProduct>
                       <ProductInti>
                         <Button onClick={() => lessOfThisProduct(product._id)}>

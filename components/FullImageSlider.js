@@ -8,7 +8,6 @@ const SliderContainer = styled.div`
   width: 100%;
   margin: auto;
   padding-top: 10px;
-  box-shadow: 9px 15px 10px #000;
 
   .slick-slide {
     display: flex;
@@ -21,11 +20,11 @@ const SliderContainer = styled.div`
   }
 
   .slick-next {
-    right: 10px;
+    right: 500px;
   }
 
   .slick-dots {
-    bottom: 10px; // Posición de los puntos de navegación
+    bottom: 500px; // Posición de los puntos de navegación
   }
 `;
 
