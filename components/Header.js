@@ -10,7 +10,7 @@ const logoImageUrl =
   "https://jony-next-commerce.s3.amazonaws.com/1721220011677.jpg";
 
 const StyledHeader = styled.header`
-  background-color: #2d3748;
+  background-color: white;
 `;
 const Logo = styled(Link)`
   display: flex;
@@ -21,7 +21,7 @@ const Logo = styled(Link)`
   z-index: 3;
 
   img {
-    height: 50px; /* Ajusta la altura de la imagen según sea necesario */
+    height: 80px; /* Ajusta la altura de la imagen según sea necesario */
   }
 `;
 const Wrapper = styled.div`
@@ -47,8 +47,8 @@ const StyledNav = styled.nav`
   left: 0;
   right: 0;
   padding: 70px 20px 20px;
-  background-color: #2d3748;
-  margin-top: 7px;
+  background-color: white;
+  margin-top: 25px;
   @media screen and (min-width: 768px) {
     display: flex;
     position: static;
@@ -57,7 +57,7 @@ const StyledNav = styled.nav`
 `;
 const NavLink = styled(Link)`
   display: block;
-  color: #aaa;
+  color: black;
   text-decoration: none;
   padding: 10px 0;
   @media screen and (min-width: 768px) {
@@ -72,7 +72,7 @@ const NavButton = styled.button`
   width: 30px;
   height: 30px;
   border: 0;
-  color: white;
+  color: black;
   cursor: pointer;
   position: relative;
   z-index: 3;
