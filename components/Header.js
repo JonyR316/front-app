@@ -92,11 +92,21 @@ export default function Header() {
             <img src={logoImageUrl} alt="Logo" />
           </Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
-            <NavLink href={"/"}>INICIO</NavLink>
-            <NavLink href={"/products"}>PRODUCTOS</NavLink>
-            <NavLink href={"/categories"}>CATEGORIAS</NavLink>
-            <NavLink href={"/nosotros"}>NOSOTROS</NavLink>
-            <NavLink href={"/cart"}>CARRITO ({cartProducts.length})</NavLink>
+            <NavLink href={"/"}>
+              <b>INICIO</b>
+            </NavLink>
+            <NavLink href={"/products"}>
+              <b>PRODUCTOS</b>
+            </NavLink>
+            <NavLink href={"/categories"}>
+              <b>CATEGORIAS</b>
+            </NavLink>
+            <NavLink href={"/nosotros"}>
+              <b>NOSOTROS</b>
+            </NavLink>
+            <NavLink href={"/cart"}>
+              <b>CARRITO</b> ({cartProducts.length})
+            </NavLink>
           </StyledNav>
           <NavButton onClick={() => setMobileNavActive((prev) => !prev)}>
             <BarsIcon />

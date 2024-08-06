@@ -9,7 +9,7 @@ import {
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  background-color: transparent;
+  background-color: white;
   color: #222;
   padding: 3px;
   text-align: center;
