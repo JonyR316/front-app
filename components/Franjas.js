@@ -3,9 +3,8 @@ import Center from "./Center";
 
 const StyledHeader = styled.div`
   background-color: #2d3748;
-  margin-top: 10px;
-  box-shadow: 15px 5px 15px #000;
-  border-radius: 10px;
+  margin-top: 30px;
+  border-radius: 20px;
 `;
 
 const Wrapper = styled.div`
@@ -15,10 +14,10 @@ const Wrapper = styled.div`
 `;
 
 const blink = keyframes`
-  0% { color: blue; }
-  33% { color: black; }
-  66% { color: white; }
-  100% { color: blue; }
+  0% { color: white; }
+  33% { color: gray; }
+  66% { color: black; }
+  100% { color: white; }
 `;
 
 const Title = styled.div`
@@ -36,7 +35,7 @@ const Title = styled.div`
   svg {
     width: 24px; /* Ajusta el tamaño del icono */
     height: 24px; /* Ajusta el tamaño del icono */
-    margin: 0 5px; /* Añade espacio entre el icono y el texto */
+    margin: 0 30px; /* Añade espacio entre el icono y el texto */
   }
 `;
 

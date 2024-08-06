@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Portada from "./portada";
 import Franjas from "@/components/Franjas";
 import Promo from "@/components/Promo";
+import FooterU from "@/components/FooterU";
 
 export default function HomePage({
   featuredProduct,
@@ -22,9 +23,10 @@ export default function HomePage({
       <Featured product={featuredProduct} />
       <Promo />
       <Portada />
-
       <NewProducts products={newProducts} />
+
       <Franjas />
+      <Footer />
     </div>
   );
 }
