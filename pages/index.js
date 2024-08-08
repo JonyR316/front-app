@@ -32,34 +32,23 @@ export default function HomePage({
 }
 
 export async function getServerSideProps() {
-  try {
-    const featuredProductId = "668c177cf4b0375fcca00c79";
-    await mongooseConnect();
-    const featuredProduct = await Product.findById(featuredProductId);
-    const newProducts = await Product.find({}, null, {
-      sort: { _id: -1 },
-      limit: 16,
-    });
-    const newCategories = await Category.find({}, null, {
-      sort: { _id: -1 },
-      limit: 16,
-    });
+  const featuredProductId = "668c177cf4b0375fcca00c79";
+  await mongooseConnect();
+  const featuredProduct = await Product.findById(featuredProductId);
+  const newProducts = await Product.find({}, null, {
+    sort: { _id: -1 },
+    limit: 16,
+  });
+  const newCategories = await Category.find({}, null, {
+    sort: { _id: -1 },
+    limit: 16,
+  });
 
-    return {
-      props: {
-        featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
-        newProducts: JSON.parse(JSON.stringify(newProducts)),
-        newCategories: JSON.parse(JSON.stringify(newCategories)),
-      },
-    };
-  } catch (error) {
-    console.error("Error in getServerSideProps:", error);
-    return {
-      props: {
-        featuredProduct: null,
-        newProducts: [],
-        newCategories: [],
-      },
-    };
-  }
+  return {
+    props: {
+      featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
+      newProducts: JSON.parse(JSON.stringify(newProducts)),
+      newCategories: JSON.parse(JSON.stringify(newCategories)),
+    },
+  };
 }
