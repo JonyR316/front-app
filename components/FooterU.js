@@ -102,7 +102,7 @@ const FooterU = () => {
           <LeftContent>
             <InfoText>
               <Titulof>
-                <b>INFORMACION DE CONTACTO 316</b>
+                <b>INFORMACION DE CONTACTO</b>
               </Titulof>
             </InfoText>
             <ContactItem>

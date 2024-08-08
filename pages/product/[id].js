@@ -48,7 +48,7 @@ export default function ProductPage({ product }) {
       <>
         <Header />
         <Center>
-          <TitleP>Producto no encontrado316316</TitleP>
+          <TitleP>Producto no encontrado</TitleP>
         </Center>
         <Footer />
       </>
