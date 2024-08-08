@@ -14,7 +14,9 @@ export default function NewCategories({ categories }) {
     <Center>
       <CategoriesGrid>
         {categories?.length > 0 &&
-          categories.map((category) => <CategoryBox {...category} />)}
+          categories.map((category) => (
+            <CategoryBox key={category._id} {...category} />
+          ))}
       </CategoriesGrid>
     </Center>
   );

@@ -63,7 +63,10 @@ export default function CategoryBox({ _id, name, parent, properties }) {
       >
         <Title>{name}</Title>
         <WhiteBox>
-          <img src="https://jony-next-commerce.s3.amazonaws.com/1722311337254.jpeg" />
+          <img
+            src="https://jony-next-commerce.s3.amazonaws.com/1722311337254.jpeg"
+            alt={`Image of ${name}`} // Added alt attribute
+          />
         </WhiteBox>
       </ProductWrapper>
     </StyledLink>
