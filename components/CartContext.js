@@ -7,22 +7,16 @@ export function CartContextProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
   useEffect(() => {
-    if (cartProducts?.length > 0) {
-      ls.setItem("cart", JSON.stringify(cartProducts));
-    }
-  }, [cartProducts]);
-
-  useEffect(() => {
     if (ls && ls.getItem("cart")) {
       setCartProducts(JSON.parse(ls.getItem("cart")));
     }
-  }, []);
+  }, [ls]); // Solo ejecuta cuando `ls` está disponible
 
   useEffect(() => {
     if (ls) {
       ls.setItem("cart", JSON.stringify(cartProducts));
     }
-  }, [cartProducts]);
+  }, [cartProducts, ls]); // Dependencias ajustadas
 
   function addProduct(productId) {
     setCartProducts((prev) => [...prev, productId]);
