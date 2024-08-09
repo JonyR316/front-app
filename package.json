@@ -2,7 +2,10 @@
   "name": "front-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://JonyR316.github.io/front-app",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -13,6 +16,7 @@
     "axios": "^1.7.2",
     "framer-motion": "^11.3.21",
     "front-app": "file:",
+    "gh-pages": "^6.1.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "mongoose": "^8.5.1",
