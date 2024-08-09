@@ -4,10 +4,11 @@
   "private": true,
   "homepage": "https://JonyR316.github.io/front-app",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run export",
+    "deploy": "gh-pages -d out",
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint"
   },
