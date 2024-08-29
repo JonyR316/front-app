@@ -17,7 +17,18 @@ export default function HomePage({
   newProducts,
   newCategories,
 }) {
-  return <div></div>;
+  return (
+    <div>
+      <Header />
+      <Featured product={featuredProduct} />
+      <Promo />
+      <Portada />
+      <NewProducts products={newProducts} />
+
+      <Franjas />
+      <Footer />
+    </div>
+  );
 }
 
 export async function getServerSideProps() {
