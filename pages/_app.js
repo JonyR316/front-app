@@ -36,7 +36,6 @@ export default function App({ Component, pageProps }) {
           <ContentWrapper>
             <Component {...pageProps} />
           </ContentWrapper>
-          <Component {...pageProps} />
           <FooterU />
         </PageContainer>
       </CartContextProvider>
