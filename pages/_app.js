@@ -4,6 +4,11 @@ import Footer from "@/components/Footer"; // Ajusta la ruta según tu estructura
 import styled from "styled-components";
 import FooterU from "@/components/FooterU";
 import Franjas from "@/components/Franjas";
+import Header from "@/components/Header";
+import Featured from "@/components/Featured";
+import Promo from "@/components/Promo";
+import Portada from "./portada";
+import NewProducts from "@/components/NewProducts";
 
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -37,6 +42,11 @@ export default function App({ Component, pageProps }) {
           <ContentWrapper>
             <Component {...pageProps} />
           </ContentWrapper>
+          <Header />
+          <Featured product={featuredProduct} />
+          <Promo />
+          <Portada />
+          <NewProducts products={newProducts} />
           <Franjas />
           <Footer />
           <FooterU />
