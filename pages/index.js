@@ -24,9 +24,6 @@ export default function HomePage({
       <Promo />
       <Portada />
       <NewProducts products={newProducts} />
-
-      <Franjas />
-      <Footer />
     </div>
   );
 }
