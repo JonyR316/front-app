@@ -4,7 +4,6 @@ import Center from "./Center";
 import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import BarsIcon from "./icons/Bars";
-import React from "react";
 
 // Importa la imagen que deseas usar
 const logoImageUrl =
